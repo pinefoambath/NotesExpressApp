@@ -1,5 +1,7 @@
-To develop:
+## How to develop in this
 
-Install the dependencies: npm install
+Installing dependencies: npm install
 
-To start the repository: npm start
+Running tests: npm test
+
+Starting the repository: npm start
