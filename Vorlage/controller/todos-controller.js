@@ -21,8 +21,8 @@ createOrUpdateTodo = async (req, res) => {
 };
 
     deleteTodo = async (req, res) => {
-        let deletedTodo = await todoStore.delete(req.params.id);
-        res.render("showTodo", { todo: deletedTodo });
+      await todoStore.delete(req.params.id);
+      res.redirect("/");
     };
 }
 
