@@ -20,11 +20,6 @@ export class TodoStore {
     return this.db.insert(todo);
   }
 
-  async delete(id) {
-    await this.db.update({ _id: id }, { $set: { "state": "DELETED" } });
-    return this.get(id);
-  }
-
   async get(id) {
     return this.db.findOne({ _id: id });
   }

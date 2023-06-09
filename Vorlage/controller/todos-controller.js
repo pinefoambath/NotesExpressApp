@@ -20,10 +20,6 @@ createOrUpdateTodo = async (req, res) => {
     res.redirect("/");
 };
 
-    deleteTodo = async (req, res) => {
-      await todoStore.delete(req.params.id);
-      res.redirect("/");
-    };
 }
 
 export const todoController = new TodoController();
