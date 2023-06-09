@@ -1,6 +1,9 @@
+import { todoStore } from '../services/todo-store.js';
+
 export class IndexController {
-    index(req, res) {
-        res.render("index", {data: "Hello World", dark: true});
+    index = async (req, res) => {
+      const todos = await todoStore.all();
+      res.render("index", { todos, dark: true });
     };
 }
 
