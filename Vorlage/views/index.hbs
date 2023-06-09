@@ -1,5 +1,6 @@
 <p>Hello World</p>
 <button onclick="location.href='/todos/create'" class="btn btn-primary">Create New Todo</button>
+{{#if todos.length}}
 <ul>
   {{#each todos}}
     <li>
@@ -14,4 +15,7 @@
     </li>
   {{/each}}
 </ul>
+{{else}}
+    <p>There are no todos.</p>
+{{/if}}
 
