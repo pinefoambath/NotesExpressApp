@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import { todoStore } from './services/todo-store.js';
 
 (async () => {
     // load config-file
@@ -6,7 +7,6 @@ import dotenv from "dotenv";
 
     // load app with current config
     const app = (await import('./app.js')).app;
-
     const hostname = '127.0.0.1';
     const port = 3001;
     app.listen(port, hostname, () => {

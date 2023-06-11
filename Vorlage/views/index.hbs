@@ -1,1 +1,21 @@
-{{data}}
+<p>Hello World</p>
+<button onclick="location.href='/todos/create'" class="btn btn-primary">Create New Todo</button>
+{{#if todos.length}}
+<ul>
+  {{#each todos}}
+    <li>
+      <div class="todo-card">
+      <h2>{{this.title}}</h2>
+      <p>Importance: {{this.importance}}</p>
+      <p>Due Date: {{this.dueDate}}</p>
+      <p>Description: {{this.description}}</p>
+      <p>Completed: {{this.completed}}</p>
+      <a href="/todos/{{this._id}}">View Details</a>
+      </div>
+    </li>
+  {{/each}}
+</ul>
+{{else}}
+    <p>There are no todos.</p>
+{{/if}}
+
