@@ -8,8 +8,12 @@ export class TodoController {
 
 showTodo = async (req, res) => {
     let todo = await todoStore.get(req.params.id);
-    res.render("addOrEdit", { todo });
-};
+    if (!todo) {
+      res.status(404).send('Todo not found 😜');
+    } else {
+      res.render("showTodo", { todo });
+    }
+  };
 
 createOrUpdateTodo = async (req, res) => {
     if (req.body.id) {
