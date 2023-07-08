@@ -1,5 +1,10 @@
-<p>Hello World</p>
+<h1>Todo App for MAS Software Engineering, Web Engineering 2</h1>
 <button onclick="location.href='/todos/create'" class="btn btn-primary">Create New Todo</button>
+<button id="sortByName">Name</button>
+<button id="sortByDueDate">By due date</button>
+<button id="sortByCreationDate">By creation date</button>
+<button id="sortByImportance">By Importance</button>
+<button id="filterCompleted">Filter Completed</button>
 {{#if todos.length}}
 <ul>
   {{#each todos}}
@@ -9,8 +14,8 @@
       <p>Importance: {{this.importance}}</p>
       <p>Due Date: {{this.dueDate}}</p>
       <p>Description: {{this.description}}</p>
-      <p>Completed: {{this.completed}}</p>
-      <a href="/todos/{{this._id}}">View Details</a>
+      <input type="checkbox" class="completed-checkbox" data-id="{{this._id}}" {{#if this.completed}}checked{{/if}}> Completed
+      <a href="/todos/{{this._id}}">Edit</a>
       </div>
     </li>
   {{/each}}
@@ -19,3 +24,4 @@
     <p>There are no todos.</p>
 {{/if}}
 
+<script src="/js/main.js"></script>

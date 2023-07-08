@@ -5,7 +5,8 @@ import { todoController } from '../controller/todos-controller.js';
 const router = express.Router();
 
 router.get("/", indexController.index.bind(indexController));
-router.get("/add", todoController.add.bind(todoController));
+router.get("/todos/create", todoController.add.bind(todoController)); 
+router.get("/todos", indexController.index.bind(indexController)); 
 router.get("/todos/:id", todoController.showTodo.bind(todoController));
 router.post("/todos", todoController.createOrUpdateTodo.bind(todoController));
 
