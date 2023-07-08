@@ -2,6 +2,14 @@ import { todoStore } from '../services/todo-store.js';
 
 export class TodoController {
     
+    async index(req, res) {
+        const todos = req.query.sort === 'title'
+          ? await todoStore.allSortedByTitle(req.query.asc === 'true') 
+          : await todoStore.all();
+        res.render("index", { todos });
+    };
+
+
     add = (req, res) => {
         const todo = { 
             title: "", 

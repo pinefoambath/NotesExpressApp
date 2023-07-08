@@ -33,6 +33,10 @@ export class TodoStore {
     await this.db.update({ _id: id }, { $set: todo }, {});
     return this.get(id);
   }
+
+  async allSortedByTitle(asc = true) {
+    return this.db.find({}).sort({ title: asc ? 1 : -1 }).exec();
+  }
 }
 
 export const todoStore = new TodoStore();
