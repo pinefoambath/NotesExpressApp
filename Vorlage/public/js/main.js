@@ -29,3 +29,11 @@ sortByNameButton.addEventListener("click", () => {
   window.location.href = `/todos?sort=title&asc=${isSortedByTitleAscending}`;
   isSortedByTitleAscending = !isSortedByTitleAscending; // state anpassen
 });
+
+let isSortedByDueDateAscending = true;
+
+const sortByDueDateButton = document.querySelector('#sortByDueDate');
+sortByDueDateButton.addEventListener('click', () => {
+  window.location.href = `/todos?sort=dueDate&asc=${isSortedByDueDateAscending}`;
+  isSortedByDueDateAscending = !isSortedByDueDateAscending;
+});

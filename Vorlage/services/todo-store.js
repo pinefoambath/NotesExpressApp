@@ -35,7 +35,20 @@ export class TodoStore {
   }
 
   async allSortedByTitle(asc = true) {
-    return this.db.find({}).sort({ title: asc ? 1 : -1 }).exec();
+    let result = this.db
+      .find({})
+      .sort({ title: asc ? 1 : -1 })
+      .exec();
+    return result;
+  }
+
+  async allSortedByDueDate(asc = true) {
+    let result = this.db
+      .find({})
+      .sort({ dueDate: asc ? 1 : -1 })
+      .exec();
+
+    return result;
   }
 }
 

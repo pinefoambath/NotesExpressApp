@@ -8,6 +8,9 @@ export class IndexController {
       case 'title':
         todos = await todoStore.allSortedByTitle();
         break;
+      case 'dueDate':
+        todos = await todoStore.allSortedByDueDate();
+        break;
       // andere sort Funktionen hier beifügen
       default:
         todos = await todoStore.all();
