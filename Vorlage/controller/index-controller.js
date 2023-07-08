@@ -11,7 +11,6 @@ export class IndexController {
       // andere sort Funktionen hier beifügen
       default:
         todos = await todoStore.all();
-        break;
     }
     res.render("index", { todos, dark: true });
   };
