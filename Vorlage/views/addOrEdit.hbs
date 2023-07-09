@@ -5,8 +5,10 @@
     <label>Title:</label>
     <input type="text" name="title" value="{{todo.title}}" required>
 
+
     <label>Importance:</label>
-    <input type="number" name="importance" value="{{todo.importance}}">
+    <input type="number" name="importance" min="1" max="5" value="{{todo.importance}}" required>
+
 
     <label>Due Date:</label>
     <input type="date" name="dueDate" value="{{todo.dueDate}}">
@@ -17,5 +19,5 @@
     <label>Finished:</label>
     <input type="checkbox" name="completed" {{#if todo.completed}}checked{{/if}}>
     
-    <input type="submit" value="{{#if todo}}Update{{else}}Create{{/if}}">
+    <input type="submit" value="{{#if todo}}Update and Overview {{else}}Create and Overview{{/if}}">
 </form>
