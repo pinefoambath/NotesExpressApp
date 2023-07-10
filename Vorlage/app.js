@@ -14,7 +14,14 @@ const hbs = exphbs.create({
     extname: '.hbs',
     defaultLayout: "default",
     helpers: {
-        ...helpers
+        ...helpers,
+        importanceIcons: function(importance) {
+            let result = '';
+            for (let i = 0; i < importance; i++) {
+                result += '<b>⚡️</b>'; 
+            }
+            return new hbs.handlebars.SafeString(result);
+        }
     }
 });
 
