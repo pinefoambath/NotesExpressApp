@@ -1,4 +1,4 @@
-import Datastore from 'nedb-promises';
+import Datastore from "nedb-promises";
 
 export class Todo {
   constructor(title, importance, dueDate, description, completed) {
@@ -12,7 +12,8 @@ export class Todo {
 
 export class TodoStore {
   constructor(db) {
-    this.db = db || new Datastore({ filename: './data/todos.db', autoload: true });
+    this.db =
+      db || new Datastore({ filename: "./data/todos.db", autoload: true });
   }
 
   async add(title, importance, dueDate, description, completed) {
@@ -34,8 +35,19 @@ export class TodoStore {
     return this.get(id);
   }
 
-  async allSortedByTitle(asc = true) {
-    return this.db.find({}).sort({ title: asc ? 1 : -1 }).exec();
+  async getSortedFilteredTodos(sortBy, sortDirection, filterOnCompleted) {
+    const allTodos = await this.db.find({});
+    let filteredTodos;
+    if (filterOnCompleted) {
+      filteredTodos = allTodos.filter((todo) => todo.completed !== "on");
+    } else {
+      filteredTodos = allTodos;
+    }
+    return filteredTodos.sort((a, b) =>
+      (sortDirection === -1 ? a[sortBy] > b[sortBy] : a[sortBy] < b[sortBy])
+        ? 1
+        : -1,
+    );
   }
 }
 
