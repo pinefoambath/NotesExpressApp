@@ -13,7 +13,7 @@ export const helpers = {
       case daysUntilDate < 1:
         return `${Math.abs(daysUntilDate)} days ago`;
       default:
-        return "Can't calculate";
+        return "Someday";
     }
   },
 };

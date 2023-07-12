@@ -47,9 +47,9 @@ describe("helpers", () => {
       expect(result).to.equal("549 days ago");
     });
 
-    it('should return "Can\'t calculate" when daysUntilDate is undefined', () => {
+    it('should return "Someday" when daysUntilDate is undefined', () => {
       const result = helpers.daysUntilDueDateText(undefined);
-      expect(result).to.equal("Can't calculate");
+      expect(result).to.equal("Someday");
     });
   });
 });
