@@ -9,7 +9,7 @@ export class IndexController {
     let todos = await todoStore.getSortedFilteredTodos(
       sortBy,
       sortDirection,
-      filterOnCompleted,
+      filterOnCompleted
     );
     res.render("index", {
       todos,

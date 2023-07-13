@@ -1,7 +1,20 @@
 export const helpers = {
-  if_eq: function (a, b, opts) {
-    if (a === b) return opts.fn(this);
-    else return opts.inverse(this);
+  daysUntilDueDateText: function (dueDate) {
+    const daysUntilDate = calculateDaysUntilDate(dueDate);
+    switch (true) {
+      case daysUntilDate === 0:
+        return "now";
+      case daysUntilDate === -1:
+        return "A day ago";
+      case daysUntilDate === 1:
+        return "In a day";
+      case daysUntilDate > 1:
+        return `In ${daysUntilDate} days`;
+      case daysUntilDate < 1:
+        return `${Math.abs(daysUntilDate)} days ago`;
+      default:
+        return "Someday";
+    }
   },
   sortingDirectionIcon: function (context, sortBy, sortDirection) {
     if (context === sortBy) {
@@ -20,4 +33,10 @@ export const helpers = {
       return text;
     }
   },
+};
+
+const calculateDaysUntilDate = (dateString) => {
+  const currentDate = new Date().setUTCHours(0, 0, 0, 0);
+  const inputDate = new Date(dateString).setUTCHours(0, 0, 0, 0);
+  return (inputDate - currentDate) / (1000 * 60 * 60 * 24);
 };

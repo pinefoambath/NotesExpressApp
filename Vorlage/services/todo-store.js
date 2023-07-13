@@ -46,7 +46,7 @@ export class TodoStore {
     return filteredTodos.sort((a, b) =>
       (sortDirection === -1 ? a[sortBy] > b[sortBy] : a[sortBy] < b[sortBy])
         ? 1
-        : -1,
+        : -1
     );
   }
 }
