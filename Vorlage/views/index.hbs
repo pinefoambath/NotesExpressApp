@@ -15,7 +15,8 @@
       <p>{{importanceIcons this.importance}}</p>
       <p>{{daysUntilDueDateText this.dueDate}}</p>
       <p>Description: {{this.description}}</p>
-      <input type="checkbox" class="completed-checkbox" data-id="{{this._id}}" {{#if this.completed}}checked{{/if}}> Completed
+      <input type="checkbox" class="completed-checkbox" data-id="{{this._id}}" {{#if this.completed}}checked{{/if}} disabled>
+          {{#if this.completed}}Completed{{else}}Open{{/if}}
       <a href="/todos/{{this._id}}">Edit</a>
       </div>
     </li>
