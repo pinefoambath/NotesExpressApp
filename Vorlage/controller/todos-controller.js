@@ -2,6 +2,7 @@ import { todoStore } from "../services/todo-store.js";
 
 export class TodoController {
   add = (req, res) => {
+    const isDarkMode = req.session.userSettings.isDarkMode;
     const todo = {
       title: "",
       importance: "",
@@ -9,15 +10,16 @@ export class TodoController {
       description: "",
       completed: false,
     };
-    res.render("addOrEdit", { todo });
+    res.render("addOrEdit", { todo, isDarkMode: isDarkMode });
   };
 
   showTodo = async (req, res) => {
+    const isDarkMode = req.session.userSettings.isDarkMode;
     let todo = await todoStore.get(req.params.id);
     if (!todo) {
       res.status(404).send("Todo not found 😜");
     } else {
-      res.render("addOrEdit", { todo });
+      res.render("addOrEdit", { todo, isDarkMode: isDarkMode });
     }
   };
 
