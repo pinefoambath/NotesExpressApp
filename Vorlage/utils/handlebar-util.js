@@ -16,6 +16,23 @@ export const helpers = {
         return "Someday";
     }
   },
+  sortingDirectionIcon: function (context, sortBy, sortDirection) {
+    if (context === sortBy) {
+      if (sortDirection === -1) {
+        return "\u25B2";
+      } else {
+        return "\u25BC";
+      }
+    } else {
+    }
+  },
+  makeTextBoldIfSelected: function (text, filterOnCompleted) {
+    if (filterOnCompleted) {
+      return text + " TODO Style: text fett";
+    } else {
+      return text;
+    }
+  },
 };
 
 const calculateDaysUntilDate = (dateString) => {

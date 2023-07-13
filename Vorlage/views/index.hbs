@@ -1,17 +1,18 @@
 <h1>Todo App for MAS Software Engineering, Web Engineering 2</h1>
 <button onclick="location.href='/todos/create'" class="btn btn-primary">Create New Todo</button>
-<button id="sortByName">Name</button>
-<button id="sortByDueDate">By due date</button>
-<button id="sortByCreationDate">By creation date</button>
-<button id="sortByImportance">By Importance</button>
-<button id="filterCompleted">Filter Completed</button>
+<button id="sortByTitle">Name {{sortingDirectionIcon 'title' sortBy sortDirection}}</button>
+<button id="sortByDueDate">By due date {{sortingDirectionIcon 'dueDate' sortBy sortDirection}}</button>
+<button id="sortByCreationDate">By creation date {{sortingDirectionIcon 'creationDate' sortBy sortDirection}}</button>
+<button id="sortByImportance">By Importance {{sortingDirectionIcon 'importance' sortBy sortDirection}}</button>
+<button id="filterOnCompleted">{{makeTextBoldIfSelected 'Filter Completed' filterOnCompleted}}</button>
+<button id="changeStyle">Toggle Style</button>
 {{#if todos.length}}
 <ul>
   {{#each todos}}
     <li>
       <div class="todo-card">
       <h2>{{this.title}}</h2>
-      <p>Importance: {{this.importance}}</p>
+      <p>{{importanceIcons this.importance}}</p>
       <p>{{daysUntilDueDateText this.dueDate}}</p>
       <p>Description: {{this.description}}</p>
       <input type="checkbox" class="completed-checkbox" data-id="{{this._id}}" {{#if this.completed}}checked{{/if}}> Completed

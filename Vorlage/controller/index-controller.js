@@ -1,23 +1,24 @@
-import { todoStore } from '../services/todo-store.js';
+import { todoStore } from "../services/todo-store.js";
 
 export class IndexController {
   index = async (req, res) => {
-    const sort = req.query.sort; 
-    let todos;
-    switch(sort){
-      case 'title':
-        todos = await todoStore.allSortedByTitle();
-        break;
-      case 'dueDate':
-        todos = await todoStore.allSortedByDueDate();
-        break;
-      // andere sort Funktionen hier beifügen
-      default:
-        todos = await todoStore.all();
-    }
-    res.render("index", { todos, dark: true });
+    const sortBy = req.session.userSettings.sortBy;
+    const sortDirection = req.session.userSettings.sortDirection;
+    const filterOnCompleted = req.session.userSettings.filterOnCompleted;
+    const isDarkMode = req.session.userSettings.isDarkMode;
+    let todos = await todoStore.getSortedFilteredTodos(
+      sortBy,
+      sortDirection,
+      filterOnCompleted
+    );
+    res.render("index", {
+      todos,
+      sortBy: sortBy,
+      sortDirection: sortDirection,
+      filterOnCompleted: filterOnCompleted,
+      isDarkMode: isDarkMode,
+    });
   };
 }
 
 export const indexController = new IndexController();
-
