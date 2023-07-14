@@ -7,6 +7,7 @@ export class TodoController {
       title: "",
       importance: "",
       dueDate: "",
+      creationDate: "",
       description: "",
       completed: false,
     };
@@ -32,6 +33,7 @@ export class TodoController {
         req.body.title,
         req.body.importance,
         req.body.dueDate,
+        req.body.creationDate,
         req.body.description,
         req.body.completed,
       );

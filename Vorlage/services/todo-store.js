@@ -1,10 +1,18 @@
 import Datastore from "nedb-promises";
 
 export class Todo {
-  constructor(title, importance, dueDate, description, completed) {
+  constructor(
+    title,
+    importance,
+    dueDate,
+    creationDate,
+    description,
+    completed,
+  ) {
     this.title = title;
     this.importance = importance;
     this.dueDate = dueDate;
+    this.creationDate = creationDate;
     this.description = description;
     this.completed = completed;
   }
@@ -17,7 +25,14 @@ export class TodoStore {
   }
 
   async add(title, importance, dueDate, description, completed) {
-    let todo = new Todo(title, importance, dueDate, description, completed);
+    let todo = new Todo(
+      title,
+      importance,
+      dueDate,
+      todoStore.getTodayDate(),
+      description,
+      completed,
+    );
     return this.db.insert(todo);
   }
 
@@ -29,8 +44,23 @@ export class TodoStore {
     return this.db.find({});
   }
 
-  async update(id, title, importance, dueDate, description, completed) {
-    let todo = new Todo(title, importance, dueDate, description, completed);
+  async update(
+    id,
+    title,
+    importance,
+    dueDate,
+    creationDate,
+    description,
+    completed,
+  ) {
+    let todo = new Todo(
+      title,
+      importance,
+      dueDate,
+      creationDate,
+      description,
+      completed,
+    );
     await this.db.update({ _id: id }, { $set: todo }, {});
     return this.get(id);
   }
@@ -46,8 +76,13 @@ export class TodoStore {
     return filteredTodos.sort((a, b) =>
       (sortDirection === -1 ? a[sortBy] > b[sortBy] : a[sortBy] < b[sortBy])
         ? 1
-        : -1
+        : -1,
     );
+  }
+
+  getTodayDate() {
+    const today = new Date();
+    return today.toISOString().split("T")[0];
   }
 }
 
