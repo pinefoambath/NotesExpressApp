@@ -61,7 +61,7 @@ describe("TodoStore", () => {
     it("should sort todos by title in ascending order", async () => {
       const sortedTodos = await todoStore.getSortedFilteredTodos(
         "title",
-        -1,
+        "desc",
         false,
       );
       expect(sortedTodos[0].title).to.equal("Todo 1");
@@ -73,7 +73,7 @@ describe("TodoStore", () => {
     it("should sort todos by importance in descending order", async () => {
       const sortedTodos = await todoStore.getSortedFilteredTodos(
         "importance",
-        1,
+        "asc",
         false,
       );
       expect(sortedTodos[0].importance).to.equal(5);
@@ -95,7 +95,7 @@ describe("TodoStore", () => {
     it("should sort todos by DueDate in ascending order", async () => {
       const sortedTodos = await todoStore.getSortedFilteredTodos(
         "dueDate",
-        -1,
+        "desc",
         false,
       );
       expect(sortedTodos[0].dueDate).to.equal("2023-07-05");
