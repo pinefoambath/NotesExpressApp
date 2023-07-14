@@ -36,7 +36,6 @@ app.use(
     saveUninitialized: true,
   }),
 );
-
 app.use(sessionUserSettings);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
