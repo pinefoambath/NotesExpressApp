@@ -36,6 +36,7 @@ app.use(
     saveUninitialized: true,
   }),
 );
+// das wird jeden Request, befor er zu den Route handlern kommt, abfangen & session user settings setzen
 app.use(sessionUserSettings);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

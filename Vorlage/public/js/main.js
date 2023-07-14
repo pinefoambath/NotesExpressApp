@@ -12,32 +12,50 @@ document.querySelectorAll(".completed-checkbox").forEach((checkbox) => {
   });
 });
 
-const sortByTitleButton = document.querySelector("#sortByTitle");
-sortByTitleButton.addEventListener("click", () => {
-  window.location.href = `/todos?sortBy=title`;
-});
+window.onload = function () {
 
-const sortByDueDateButton = document.querySelector("#sortByDueDate");
-sortByDueDateButton.addEventListener("click", () => {
-  window.location.href = `/todos?sortBy=dueDate`;
-});
+  sessionStorage.setItem('sortBy', document.getElementById('sortBy').value);
+  sessionStorage.setItem('sortDirection', document.getElementById('sortDirection').value);
 
-const sortByCreationDateButton = document.querySelector("#sortByCreationDate");
-sortByCreationDateButton.addEventListener("click", () => {
-  window.location.href = `/todos?sortBy=creationDate`;
-});
+  document.getElementById('sortByTitle').addEventListener('click', function () {
+      updateSort('title');
+  });
 
-const sortByImportanceButton = document.querySelector("#sortByImportance");
-sortByImportanceButton.addEventListener("click", () => {
-  window.location.href = `/todos?sortBy=importance`;
-});
+  document.getElementById('sortByDueDate').addEventListener('click', function () {
+      updateSort('dueDate');
+  });
 
-const filterOnCompletedButton = document.querySelector("#filterOnCompleted");
-filterOnCompletedButton.addEventListener("click", () => {
-  window.location.href = `/todos?isFilterOnCompletedClicked=true`;
-});
+  document.getElementById('sortByCreationDate').addEventListener('click', function () {
+      updateSort('creationDate');
+  });
 
-const changeStyleButton = document.querySelector("#changeStyle");
-changeStyleButton.addEventListener("click", () => {
-  window.location.href = `/todos?isChangeStyleClicked=true`;
-});
+  document.getElementById('sortByImportance').addEventListener('click', function () {
+      updateSort('importance');
+  });
+
+  document.getElementById('filterOnCompleted').addEventListener('click', function () {
+      window.location.href = '/toggle-completed-filter';
+  });
+  
+  document.getElementById('changeStyle').addEventListener('click', function () {
+      window.location.href = '/toggle-dark-mode';
+  });
+};
+
+function updateSort(sortBy) {
+  const currentSortBy = sessionStorage.getItem('sortBy');
+  const currentSortDirection = sessionStorage.getItem('sortDirection');
+
+  if (sortBy === currentSortBy) {
+      const newSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+      sessionStorage.setItem('sortDirection', newSortDirection);
+  } else {
+      sessionStorage.setItem('sortBy', sortBy);
+      sessionStorage.setItem('sortDirection', 'asc');
+  }
+
+  const newSortBy = sessionStorage.getItem('sortBy');
+  const newSortDirection = sessionStorage.getItem('sortDirection');
+  window.location.href = `/?sortBy=${newSortBy}&sortDirection=${newSortDirection}`;
+}
+

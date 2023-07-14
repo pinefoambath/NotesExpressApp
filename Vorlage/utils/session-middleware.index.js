@@ -1,20 +1,18 @@
 export const sessionUserSettings = (req, res, next) => {
   const userSettings = req.session?.userSettings || {
     sortBy: "title",
-    sortDirection: -1,
+    sortDirection: 'asc',
     filterOnCompleted: false,
     isDarkMode: false,
   };
-  const { sortBy, isFilterOnCompletedClicked, isChangeStyleClicked } =
-    req.query;
 
+  const { sortBy, sortDirection, isFilterOnCompletedClicked, isChangeStyleClicked } = req.query;
+  // update das userSettings object basierend auf unseren query parameters
   if (sortBy) {
-    if (userSettings.sortBy === sortBy) {
-      userSettings.sortDirection = -userSettings.sortDirection;
-    } else {
-      userSettings.sortDirection = -1;
-    }
     userSettings.sortBy = sortBy;
+  }
+  if (sortDirection) {
+    userSettings.sortDirection = sortDirection;
   }
   if (isFilterOnCompletedClicked) {
     userSettings.filterOnCompleted = !userSettings.filterOnCompleted;
@@ -25,3 +23,4 @@ export const sessionUserSettings = (req, res, next) => {
   req.userSettings = req.session.userSettings = userSettings;
   next();
 };
+

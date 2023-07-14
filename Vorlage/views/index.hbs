@@ -6,6 +6,9 @@
 <button id="sortByImportance">By Importance {{sortingDirectionIcon 'importance' sortBy sortDirection}}</button>
 <button id="filterOnCompleted">{{makeTextBoldIfSelected 'Filter Completed' filterOnCompleted}}</button>
 <button id="changeStyle">Toggle Style</button>
+<input type="hidden" id="sortBy" value="{{sortBy}}">
+<input type="hidden" id="sortDirection" value="{{sortDirection}}">
+
 {{#if todos.length}}
 <ul>
   {{#each todos}}
