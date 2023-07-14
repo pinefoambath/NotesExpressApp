@@ -18,8 +18,9 @@
     <input type="checkbox" name="completed" {{#if todo.completed}}checked{{/if}}>
 
     <input type="hidden" name="creationDate" value="{{todo.creationDate}}">
-    
-    <input name="submit-type" type="submit" value="{{#if todo.title}}Update{{else}}Create{{/if}}">
-    <input name="submit-type" type="submit" value="{{#if todo.title}}Update and Overview{{else}}Create and Overview{{/if}}">
-    <input type="button" value="Overview" onclick="window.location.href='/'">
+    <div class="addOrEdit-actionButtons">
+        <input name="submit-type" type="submit" value="{{#if todo.title}}Update{{else}}Create{{/if}}">
+        <input name="submit-type" type="submit" value="{{#if todo.title}}Update and Overview{{else}}Create and Overview{{/if}}">
+        <input type="button" value="Overview" onclick="window.location.href='/'">
+    </div>
 </form>

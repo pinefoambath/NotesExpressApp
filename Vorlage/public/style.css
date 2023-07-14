@@ -1,0 +1,110 @@
+.navigation-card1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+            "navigation-card1-content1 navigation-card1-content2"
+}
+.navigation-card1-content1 {
+    display: grid;
+    justify-content: start;
+    grid-area: navigation-card1-content1;
+}
+.navigation-card1-content2 {
+    display: grid;
+    justify-content: end;
+    grid-area: navigation-card1-content2;
+}
+.navigation-card2 {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-areas:
+            "navigation-card2-button-collection navigation-card2-content5"
+}
+.navigation-card2-button-collection {
+    display: flex;
+}
+.navigation-card2-content1{
+    display: grid;
+    justify-content: start;
+    grid-area: navigation-card2-content1;
+}
+.navigation-card2-content2{
+    display: grid;
+    justify-content: start;
+    grid-area: navigation-card2-content2
+}
+.navigation-card2-content3{
+    display: grid;
+    justify-content: start;
+    grid-area: navigation-card2-content3
+}
+.navigation-card2-content4{
+    display: grid;
+    justify-content: start;
+    grid-area: navigation-card2-content4
+}
+.navigation-card2-content5{
+    display: grid;
+    justify-content: end;
+    grid-area: navigation-card2-content5
+}
+.todo-card {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+            "todo-content1 todo-content2"
+            "todo-content3 todo-content2";
+    border-bottom: 3px solid #ccc;
+    grid-gap: 0.4rem;
+}
+.todo-content1{
+    display: grid;
+    grid-template-columns: 2fr 5fr 2fr;
+    grid-area: todo-content1
+}
+.todo-content2{
+    display: grid;
+    place-items: center;
+    grid-area: todo-content2;
+}
+.todo-content3{
+    display: grid;
+    grid-template-columns: 2fr 5fr 2fr;
+    grid-row: auto;
+    grid-auto-rows: min-content;
+    grid-area: todo-content3;
+}
+.todo-text {
+    word-break: break-all;
+}
+.addOrEdit-actionButtons{
+    display: flex;
+}
+@media only screen and (max-width: 550px) {
+    .todo-card{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+                "todo-content1"
+                "todo-content3"
+                "todo-content2"
+    }
+    .navigation-card2-button-collection{
+        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-areas:
+                "navigation-card2-content1"
+                "navigation-card2-content2"
+                "navigation-card2-content3"
+                "navigation-card2-content4";
+        grid-area: navigation-card2-button-collection
+    }
+    .navigation-card2{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+                "navigation-card2-button-collection"
+                "navigation-card2-content5"
+    }
+}
