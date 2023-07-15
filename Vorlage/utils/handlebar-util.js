@@ -18,7 +18,7 @@ export const helpers = {
   },
   sortingDirectionIcon: function (context, sortBy, sortDirection) {
     if (context === sortBy) {
-      if (sortDirection === -1) {
+      if (sortDirection === "desc") {
         return "\u25B2";
       } else {
         return "\u25BC";

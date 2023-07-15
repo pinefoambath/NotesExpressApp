@@ -26,6 +26,8 @@
         <button id="filterOnCompleted">{{makeTextBoldIfSelected 'Filter Completed' filterOnCompleted}}</button>
     </div>
 </div>
+<input type="hidden" id="sortBy" value="{{sortBy}}">
+<input type="hidden" id="sortDirection" value="{{sortDirection}}">
 
 {{#if todos.length}}
 <div>

@@ -17,5 +17,7 @@ router.post("/todos", async (req, res) => {
     res.status(500).send('Ups! Ein Fehler ist in der Post Route im index-routes.js aufgetreten');
   }
 });
+router.get("/toggle-completed-filter", indexController.toggleCompletedFilter.bind(indexController));
+router.get("/toggle-dark-mode", indexController.toggleDarkMode.bind(indexController));
 
 export const indexRoutes = router;
