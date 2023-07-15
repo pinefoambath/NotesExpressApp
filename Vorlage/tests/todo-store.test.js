@@ -85,8 +85,8 @@ describe("TodoStore", () => {
     it("should filter out completed todos", async () => {
       const sortedTodos = await todoStore.getSortedFilteredTodos(
         "title",
-        -1,
-        true,
+        "desc",
+        true
       );
       expect(sortedTodos).to.have.lengthOf(3);
       expect(sortedTodos[0].completed).to.not.equal("on");
@@ -107,8 +107,8 @@ describe("TodoStore", () => {
     it("should sort todos by CreationDate in descending order", async () => {
       const sortedTodos = await todoStore.getSortedFilteredTodos(
         "creationDate",
-        1,
-        false,
+        "asc",
+        false
       );
       expect(sortedTodos[0].creationDate).to.equal("2023-06-08");
       expect(sortedTodos[1].creationDate).to.equal("2023-06-07");
