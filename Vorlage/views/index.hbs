@@ -1,64 +1,84 @@
-<h1>Todo App for MAS Software Engineering, Web Engineering 2</h1>
-<div class="navigation-card1">
-    <div class="navigation-card1-content1">
-        <button onclick="location.href='/todos/create'" class="btn btn-primary">Create New Todo</button>
-    </div>
-    <div class="navigation-card1-content2">
-        <button id="changeStyle">Toggle Style</button>
-    </div>
-</div>
-<div class="navigation-card2" >
-    <div class="navigation-card2-button-collection">
-        <div class="navigation-card2-content1">
-            <button id="sortByTitle">Name {{sortingDirectionIcon 'title' sortBy sortDirection}}</button>
-        </div>
-        <div class="navigation-card2-content2">
-            <button id="sortByDueDate">By due date {{sortingDirectionIcon 'dueDate' sortBy sortDirection}}</button>
-        </div>
-        <div class="navigation-card2-content3">
-            <button id="sortByCreationDate">By creation date {{sortingDirectionIcon 'creationDate' sortBy sortDirection}}</button>
-        </div>
-        <div class="navigation-card2-content4">
-            <button id="sortByImportance">By Importance {{sortingDirectionIcon 'importance' sortBy sortDirection}}</button>
-        </div>
-    </div>
-    <div class="navigation-card2-content5">
-        <button id="filterOnCompleted">{{makeTextBoldIfSelected 'Filter Completed' filterOnCompleted}}</button>
-    </div>
-</div>
-<input type="hidden" id="sortBy" value="{{sortBy}}">
-<input type="hidden" id="sortDirection" value="{{sortDirection}}">
+<h1 class="title">Todo App</h1>
+<div class="mt-3 mb-3 ml-3 mr-3">
+	<div class="navigation-card1">
+		<div class="navigation-card1-content1">
+			<button class="btn btn-primary" onclick="location.href='/todos/create'">Create New Todo</button>
+		</div>
+		<div class="navigation-card1-content2">
+			<button class="btn btn-primary" id="changeStyle">Toggle Style</button>
+		</div>
+	</div>
+	<div class="navigation-card2">
+		<div class="navigation-card2-button-collection">
+			<div class="navigation-card2-content1">
+				<button class="btn btn-primary"
+						id="sortByTitle">By Name {{sortingDirectionIcon 'title' sortBy sortDirection}}</button>
+			</div>
+			<div class="navigation-card2-content2">
+				<button class="btn btn-primary"
+						id="sortByDueDate">By Due Date {{sortingDirectionIcon 'dueDate' sortBy sortDirection}}
+				</button>
+			</div>
+			<div class="navigation-card2-content3">
+				<button class="btn btn-primary"
+						id="sortByCreationDate">By Creation Date {{sortingDirectionIcon 'creationDate' sortBy sortDirection}}
+				</button>
+			</div>
+			<div class="navigation-card2-content4">
+				<button class="btn btn-primary"
+						id="sortByImportance">Importance {{sortingDirectionIcon 'importance' sortBy sortDirection}}
+				</button>
+			</div>
+		</div>
+		<div class="navigation-card2-content5">
+			<button class="btn btn-primary" id="filterOnCompleted">
+				{{#if filterOnCompleted}}
+					<strong>Filter Completed</strong>
+				{{else}}
+					Filter Completed
+				{{/if}}
+			</button>
+		</div>
+	</div>
+	<input type="hidden" id="sortBy" value="{{sortBy}}">
+	<input type="hidden" id="sortDirection" value="{{sortDirection}}">
 
-{{#if todos.length}}
-<div>
-  {{#each todos}}
-      <div class="todo-card" >
-          <div class="todo-content1">
-              <div>{{daysUntilDueDateText this.dueDate}}</div>
-              <div class="todo-text">{{this.title}}</div>
-              <div>{{importanceIcons this.importance}}</div>
-          </div>
-          <div class="todo-content2">
-              <a href="/todos/{{this._id}}">
-                  <button class="edit-button">Edit</button>
-              </a>
-          </div>
-          <div class="todo-content3">
-              <div>
-                  <label>
-                      <input type="checkbox" class="completed-checkbox" data-id="{{this._id}}"
-                         {{#if this.completed}}checked{{/if}} disabled>
-                  </label>
-                  {{#if this.completed}}Completed{{else}}Open{{/if}}
-              </div>
-              <div class="todo-text">{{this.description}}</div>
-              <div></div>
-          </div>
-      </div>
-  {{/each}}
+	{{#if todos.length}}
+		<div>
+			{{#each todos}}
+				<div class="todo-card">
+					<div class="todo-content1">
+						<div>{{daysUntilDueDateText this.dueDate}}</div>
+						<div class="todo-text"><strong>{{this.title}}</strong></div>
+						<div>{{importanceIcons this.importance}}</div>
+					</div>
+					<div class="todo-content2">
+						<div>
+							<a href="/todos/{{this._id}}">
+								<button class="btn btn-primary">Edit</button>
+							</a>
+						</div>
+					</div>
+					<div class="todo-content3">
+						<div>
+							<label>
+								<input type="checkbox" class="completed-checkbox" data-id="{{this._id}}"
+									   {{#if this.completed}}checked{{/if}} disabled>
+							</label>
+							{{#if this.completed}}Completed{{else}}Open{{/if}}
+						</div>
+						<div class="todo-text">{{this.description}}</div>
+						<div></div>
+					</div>
+				</div>
+				{{#unless @last}}
+					<div class="todo-card-break-line"></div>
+				{{/unless}}
+			{{/each}}
+		</div>
+	{{else}}
+		<p>There are no todos</p>
+	{{/if}}
 </div>
-{{else}}
-    <p>There are no todos.</p>
-{{/if}}
 
 <script src="/js/main.js"></script>

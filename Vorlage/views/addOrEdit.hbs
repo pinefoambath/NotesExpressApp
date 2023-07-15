@@ -1,26 +1,36 @@
-<form method="post" action="/todos">
-    {{#if todo}}
-    <input type="hidden" name="id" value="{{todo._id}}">
-    {{/if}}
-    <label>Title:</label>
-    <input type="text" name="title" value="{{todo.title}}" required>
-
-    <label>Importance:</label>
-    <input type="number" name="importance" min="1" max="5" value="{{todo.importance}}" required>
-
-    <label>Due Date:</label>
-    <input type="date" name="dueDate" value="{{todo.dueDate}}">
-
-    <label>Description:</label>
-    <textarea name="description">{{todo.description}}</textarea>
-
-    <label>Finished:</label>
-    <input type="checkbox" name="completed" {{#if todo.completed}}checked{{/if}}>
-
-    <input type="hidden" name="creationDate" value="{{todo.creationDate}}">
-    <div class="addOrEdit-actionButtons">
-        <input name="submit-type" type="submit" value="{{#if todo.title}}Update{{else}}Create{{/if}}">
-        <input name="submit-type" type="submit" value="{{#if todo.title}}Update and Overview{{else}}Create and Overview{{/if}}">
-        <input type="button" value="Overview" onclick="window.location.href='/'">
-    </div>
-</form>
+<h1 class="title">{{#if todo.title}}Update Todo{{else}}Create Todo{{/if}}</h1>
+<div class="mt-3 mb-3 ml-3 mr-3">
+	<form method="post" action="/todos">
+		{{#if todo}}
+			<input type="hidden" name="id" value="{{todo._id}}">
+		{{/if}}
+		<div class="mb-3">
+			<label>Title</label>
+			<input type="text" name="title" class="col-12" value="{{todo.title}}" required>
+		</div>
+		<div class="mb-3">
+			<label>Importance</label>
+			<input type="number" name="importance" min="1" max="5" class="col-12" value="{{todo.importance}}" required>
+		</div>
+		<div class="mb-3">
+			<label>Due Date</label>
+			<input type="date" name="dueDate" class="col-12" value="{{todo.dueDate}}" placeholder="dd/mm/yyyy">
+		</div>
+		<div class="mb-3">
+			<label>Description</label>
+			<textarea name="description" class="col-12">{{todo.description}}</textarea>
+		</div>
+		<div class="mb-3">
+			<input type="checkbox" name="completed" {{#if todo.completed}}checked{{/if}}>
+			<label>Finished</label>
+		</div>
+		<input type="hidden" name="creationDate" value="{{todo.creationDate}}">
+		<div class="addOrEdit-actionButtons">
+			<input class="btn btn-primary" name="submit-type" type="submit"
+				   value="{{#if todo.title}}Update{{else}}Create{{/if}}">
+			<input class="btn btn-primary" name="submit-type" type="submit"
+				   value="{{#if todo.title}}Update & Overview{{else}}Create & Overview{{/if}}">
+			<input class="btn btn-primary" type="button" value="Overview" onclick="window.location.href='/'">
+		</div>
+	</form>
+</div>

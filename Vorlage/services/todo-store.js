@@ -78,7 +78,7 @@ export class TodoStore {
         ? 1
         : -1,
     );
-}
+  }
 
 
   getTodayDate() {

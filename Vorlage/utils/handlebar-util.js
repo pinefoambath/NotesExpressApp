@@ -26,13 +26,6 @@ export const helpers = {
     } else {
     }
   },
-  makeTextBoldIfSelected: function (text, filterOnCompleted) {
-    if (filterOnCompleted) {
-      return text + " TODO Style: text fett";
-    } else {
-      return text;
-    }
-  },
 };
 
 const calculateDaysUntilDate = (dateString) => {
