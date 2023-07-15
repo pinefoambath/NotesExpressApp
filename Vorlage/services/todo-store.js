@@ -73,13 +73,25 @@ export class TodoStore {
     } else {
       filteredTodos = allTodos;
     }
-    return filteredTodos.sort((a, b) =>
-      (sortDirection === 'desc' ? a[sortBy] > b[sortBy] : a[sortBy] < b[sortBy])
-        ? 1
-        : -1,
-    );
-}
 
+    return filteredTodos.sort((a, b) => {
+      if (a[sortBy].length === 0 && b[sortBy].length === 0) {
+        return 0;
+      } else if (a[sortBy].length === 0) {
+        return 1;
+      } else if (b[sortBy].length === 0) {
+        return -1;
+      } else {
+        return (
+          sortDirection === "desc"
+            ? a[sortBy] > b[sortBy]
+            : a[sortBy] < b[sortBy]
+        )
+          ? 1
+          : -1;
+      }
+    });
+  }
 
   getTodayDate() {
     const today = new Date();
