@@ -74,11 +74,12 @@ export class TodoStore {
       filteredTodos = allTodos;
     }
     return filteredTodos.sort((a, b) =>
-      (sortDirection === -1 ? a[sortBy] > b[sortBy] : a[sortBy] < b[sortBy])
+      (sortDirection === 'desc' ? a[sortBy] > b[sortBy] : a[sortBy] < b[sortBy])
         ? 1
         : -1,
     );
-  }
+}
+
 
   getTodayDate() {
     const today = new Date();
