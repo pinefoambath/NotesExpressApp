@@ -41,3 +41,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/", indexRoutes);
+app.use(
+  "/public",
+  express.static("public", {
+    setHeaders: (res, path, stat) => {
+      if (path.endsWith(".css")) {
+        res.setHeader("Content-Type", "text/css");
+      }
+    },
+  }),
+);
