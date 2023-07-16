@@ -56,7 +56,6 @@ function updateSort(sortBy) {
   window.location.href = `/?sortBy=${newSortBy}&sortDirection=${newSortDirection}`;
 }
 
-// On page load, setze die Session Storage Items und füge die Event Listener hinzu
 window.onload = function () {
   addCheckboxListeners();
   setSessionStorageItems();

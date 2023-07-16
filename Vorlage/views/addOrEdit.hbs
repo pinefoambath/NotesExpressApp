@@ -26,21 +26,4 @@
 </form>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-
-<script>
-window.onload = function() {
-    document.getElementById('completed').addEventListener('change', function() {
-        if (this.checked) {
-            confetti({
-                particleCount: 100,
-                startVelocity: 30,
-                spread: 360,
-                origin: {
-                    x: Math.random(),
-                    y: Math.random() - 0.2
-                }
-            });
-        }
-    });
-};
-</script>
+<script src="/js/addOrEdit.js"></script>
