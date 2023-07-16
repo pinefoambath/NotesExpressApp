@@ -1,12 +1,17 @@
 export const sessionUserSettings = (req, res, next) => {
   const userSettings = req.session?.userSettings || {
     sortBy: "title",
-    sortDirection: 'asc',
+    sortDirection: "asc",
     filterOnCompleted: false,
     isDarkMode: false,
   };
 
-  const { sortBy, sortDirection, isFilterOnCompletedClicked, isChangeStyleClicked } = req.query;
+  const {
+    sortBy,
+    sortDirection,
+    isFilterOnCompletedClicked,
+    isChangeStyleClicked,
+  } = req.query;
   if (sortBy) {
     userSettings.sortBy = sortBy;
   }
@@ -22,4 +27,3 @@ export const sessionUserSettings = (req, res, next) => {
   req.userSettings = req.session.userSettings = userSettings;
   next();
 };
-

@@ -1,5 +1,5 @@
 export const helpers = {
-  daysUntilDueDateText:  (dueDate) => {
+  daysUntilDueDateText: (dueDate) => {
     const daysUntilDate = calculateDaysUntilDate(dueDate);
     switch (true) {
       case daysUntilDate === 0:
@@ -16,14 +16,13 @@ export const helpers = {
         return "Someday";
     }
   },
-  sortingDirectionIcon:  (context, sortBy, sortDirection) => {
+  sortingDirectionIcon: (context, sortBy, sortDirection) => {
     if (context === sortBy) {
       if (sortDirection === "desc") {
         return "\u25B2";
       } else {
         return "\u25BC";
       }
-    } else {
     }
   },
 };

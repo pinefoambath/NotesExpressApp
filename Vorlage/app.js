@@ -14,7 +14,7 @@ const hbs = exphbs.create({
   defaultLayout: "default",
   helpers: {
     ...helpers,
-    importanceIcons:  (importance) => {
+    importanceIcons: (importance) => {
       let result = "";
       for (let i = 0; i < importance; i++) {
         result += "<b>⚡️</b>";

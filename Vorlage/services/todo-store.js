@@ -25,7 +25,7 @@ export class TodoStore {
   }
 
   async add(title, importance, dueDate, description, completed) {
-    let todo = new Todo(
+    const todo = new Todo(
       title,
       importance,
       dueDate,
@@ -53,7 +53,7 @@ export class TodoStore {
     description,
     completed,
   ) {
-    let todo = new Todo(
+    const todo = new Todo(
       title,
       importance,
       dueDate,

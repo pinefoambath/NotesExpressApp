@@ -9,18 +9,18 @@ export class TodoController {
       dueDate: "",
       creationDate: "",
       description: "",
-      completed: false,
+      completed: "",
     };
-    res.render("addOrEdit", { todo, isDarkMode: isDarkMode });
+    res.render("addOrEdit", { todo, isDarkMode });
   };
 
   showTodo = async (req, res) => {
     const isDarkMode = req.session.userSettings.isDarkMode;
-    let todo = await todoStore.get(req.params.id);
+    const todo = await todoStore.get(req.params.id);
     if (!todo) {
       res.status(404).send("Todo not found 😢");
     } else {
-      res.render("addOrEdit", { todo, isDarkMode: isDarkMode });
+      res.render("addOrEdit", { todo, isDarkMode });
     }
   };
 
