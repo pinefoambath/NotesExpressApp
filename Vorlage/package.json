@@ -1,11 +1,11 @@
 {
-  "name": "demo",
+  "name": "Todo App",
   "version": "1.0.0",
-  "description": "Vorlage",
+  "description": "Todo management web application",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha tests/*.test.js"
+    "test": "mocha tests/**/*.test.js"
   },
   "type": "module",
   "author": "mgfeller",

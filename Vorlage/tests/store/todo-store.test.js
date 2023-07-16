@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { todoStore } from "../services/todo-store.js";
+import { todoStore } from "../../services/todo-store.js";
 
 describe("TodoStore", () => {
   describe(".all()", () => {

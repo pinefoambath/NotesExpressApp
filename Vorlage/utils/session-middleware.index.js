@@ -7,7 +7,6 @@ export const sessionUserSettings = (req, res, next) => {
   };
 
   const { sortBy, sortDirection, isFilterOnCompletedClicked, isChangeStyleClicked } = req.query;
-  // update das userSettings object basierend auf unseren query parameters
   if (sortBy) {
     userSettings.sortBy = sortBy;
   }
