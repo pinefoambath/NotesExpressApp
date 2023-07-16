@@ -48,6 +48,24 @@ describe("TodoStore", () => {
         completed: "",
         _id: "Def789",
       },
+      {
+        title: "Todo 5",
+        importance: 1,
+        dueDate: "",
+        creationDate: "2023-07-07",
+        description: "Description 5",
+        completed: "",
+        _id: "AgP709",
+      },
+      {
+        title: "Todo 6",
+        importance: 1,
+        dueDate: "",
+        creationDate: "2023-06-08",
+        description: "Description 6",
+        completed: "",
+        _id: "bDe231",
+      },
     ];
 
     const dbMock = {
@@ -68,6 +86,8 @@ describe("TodoStore", () => {
       expect(sortedTodos[1].title).to.equal("Todo 2");
       expect(sortedTodos[2].title).to.equal("Todo 3");
       expect(sortedTodos[3].title).to.equal("Todo 4");
+      expect(sortedTodos[4].title).to.equal("Todo 5");
+      expect(sortedTodos[5].title).to.equal("Todo 6");
     });
 
     it("should sort todos by importance in descending order", async () => {
@@ -80,19 +100,21 @@ describe("TodoStore", () => {
       expect(sortedTodos[1].importance).to.equal(3);
       expect(sortedTodos[2].importance).to.equal(2);
       expect(sortedTodos[3].importance).to.equal(1);
+      expect(sortedTodos[4].importance).to.equal(1);
+      expect(sortedTodos[5].importance).to.equal(1);
     });
 
     it("should filter out completed todos", async () => {
       const sortedTodos = await todoStore.getSortedFilteredTodos(
         "title",
         "desc",
-        true
+        true,
       );
-      expect(sortedTodos).to.have.lengthOf(3);
+      expect(sortedTodos).to.have.lengthOf(5);
       expect(sortedTodos[0].completed).to.not.equal("on");
     });
 
-    it("should sort todos by DueDate in ascending order", async () => {
+    it("should sort todos by DueDate in ascending order with empty value data at the end", async () => {
       const sortedTodos = await todoStore.getSortedFilteredTodos(
         "dueDate",
         "desc",
@@ -102,18 +124,36 @@ describe("TodoStore", () => {
       expect(sortedTodos[1].dueDate).to.equal("2023-07-06");
       expect(sortedTodos[2].dueDate).to.equal("2023-07-07");
       expect(sortedTodos[3].dueDate).to.equal("2023-07-08");
+      expect(sortedTodos[4].dueDate).to.equal("");
+      expect(sortedTodos[5].dueDate).to.equal("");
+    });
+
+    it("should sort todos by DueDate in descending order with empty value data at the end", async () => {
+      const sortedTodos = await todoStore.getSortedFilteredTodos(
+        "dueDate",
+        "asc",
+        false,
+      );
+      expect(sortedTodos[0].dueDate).to.equal("2023-07-08");
+      expect(sortedTodos[1].dueDate).to.equal("2023-07-07");
+      expect(sortedTodos[2].dueDate).to.equal("2023-07-06");
+      expect(sortedTodos[3].dueDate).to.equal("2023-07-05");
+      expect(sortedTodos[4].dueDate).to.equal("");
+      expect(sortedTodos[5].dueDate).to.equal("");
     });
 
     it("should sort todos by CreationDate in descending order", async () => {
       const sortedTodos = await todoStore.getSortedFilteredTodos(
         "creationDate",
         "asc",
-        false
+        false,
       );
-      expect(sortedTodos[0].creationDate).to.equal("2023-06-08");
-      expect(sortedTodos[1].creationDate).to.equal("2023-06-07");
-      expect(sortedTodos[2].creationDate).to.equal("2023-06-06");
-      expect(sortedTodos[3].creationDate).to.equal("2023-06-05");
+      expect(sortedTodos[0].creationDate).to.equal("2023-07-07");
+      expect(sortedTodos[1].creationDate).to.equal("2023-06-08");
+      expect(sortedTodos[2].creationDate).to.equal("2023-06-08");
+      expect(sortedTodos[3].creationDate).to.equal("2023-06-07");
+      expect(sortedTodos[4].creationDate).to.equal("2023-06-06");
+      expect(sortedTodos[5].creationDate).to.equal("2023-06-05");
     });
   });
 });

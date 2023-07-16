@@ -22,7 +22,7 @@
 			<textarea name="description" class="col-12">{{todo.description}}</textarea>
 		</div>
 		<div class="mb-3">
-			<input type="checkbox" name="completed" {{#if todo.completed}}checked{{/if}}>
+			<input id="completed" type="checkbox" name="completed" {{#if todo.completed}}checked{{/if}}>
 			<label>Finished</label>
 		</div>
 		<input type="hidden" name="creationDate" value="{{todo.creationDate}}">
@@ -35,3 +35,5 @@
 		</div>
 	</form>
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script src="/js/addOrEdit.js"></script>
