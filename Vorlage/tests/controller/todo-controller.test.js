@@ -1,7 +1,6 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
-import { app } from "../app.js";
-import { createTodo } from "./factories/todoFactory.js";
+import { app } from "../../app.js";
 
 chai.use(chaiHttp);
 const expect = chai.expect;
