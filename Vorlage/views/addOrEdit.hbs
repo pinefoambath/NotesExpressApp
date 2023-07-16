@@ -7,21 +7,30 @@
 	{{/if}}
 	<div class="mb-3">
 		<label>Title</label>
-		<input type="text" name="title" class="col-12" value="{{todo.title}}" required>
+		<label>
+			<input type="text" name="title" class="col-12" value="{{todo.title}}" required>
+		</label>
 	</div>
 	<div class="mb-3">
 		<label>Importance</label>
-		<input type="number" name="importance" min="1" max="5" class="col-12" value="{{todo.importance}}" required>
+		<label>
+			<input type="number" name="importance" min="1" max="5" class="col-12" value="{{todo.importance}}" required>
+		</label>
 	</div>
 	<div class="mb-3">
 		<label>Due Date</label>
-		<input type="date" name="dueDate" class="col-12" value="{{todo.dueDate}}" placeholder="dd/mm/yyyy">
+		<label>
+			<input type="date" name="dueDate" class="col-12" value="{{todo.dueDate}}" placeholder="dd/mm/yyyy">
+		</label>
 	</div>
 	<div class="mb-3">
 		<label>Description</label>
-		<textarea name="description" class="col-12">{{todo.description}}</textarea>
+		<label>
+			<textarea name="description" class="col-12">{{todo.description}}</textarea>
+		</label>
 	</div>
 	<div class="mb-3">
+		<label for="completed"></label>
 		<input id="completed" type="checkbox" name="completed" {{#if todo.completed}}checked{{/if}}>
 		<label>Finished</label>
 	</div>
