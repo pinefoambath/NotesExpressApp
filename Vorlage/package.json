@@ -1,7 +1,7 @@
 {
   "name": "Todo App",
   "version": "1.0.0",
-  "description": "Todo management web qpplication",
+  "description": "Todo management web application",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
