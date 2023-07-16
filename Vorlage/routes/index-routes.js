@@ -13,8 +13,7 @@ router.post("/todos", async (req, res) => {
     const { redirect } = await todoController.createOrUpdateTodo(req);
     res.redirect(redirect);
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Ups! Ein Fehler ist in der Post Route im index-routes.js aufgetreten');
+    res.status(500).send('Oops! An error occurred in the post route in index-routes.js');
   }
 });
 router.get("/toggle-completed-filter", indexController.toggleCompletedFilter.bind(indexController));
